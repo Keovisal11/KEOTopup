@@ -16,12 +16,16 @@
         label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 14px; color: #c9d1d9; }
         input, select { width: 100%; padding: 12px 14px; background-color: #0d1117; border: 1px solid #30363d; border-radius: 8px; color: #f0f6fc; font-size: 15px; outline: none; }
         input:focus, select:focus { border-color: #58a6ff; }
-        .package-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 8px; }
-        .package-card { background: #0d1117; border: 1.5px solid #30363d; border-radius: 10px; padding: 12px; text-align: center; cursor: pointer; transition: all 0.2s ease; }
-        .package-card:hover { border-color: #58a6ff; background: #1f242d; }
-        .package-card.active { border-color: #238636; background: #102a1d; }
+        
+        /* 🎨 ការរៀបចំ Card កញ្ចប់ដែលមានរូបភាព */
+        .package-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 8px; }
+        .package-card { background: #0d1117; border: 1.5px solid #30363d; border-radius: 12px; padding: 14px 10px; text-align: center; cursor: pointer; transition: all 0.2s ease; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; }
+        .package-card:hover { border-color: #58a6ff; background: #1f242d; transform: translateY(-2px); }
+        .package-card.active { border-color: #238636; background: #102a1d; box-shadow: 0 0 12px rgba(35, 134, 54, 0.5); }
+        .package-img { width: 50px; height: 50px; object-fit: contain; margin-bottom: 8px; }
         .package-title { font-size: 14px; font-weight: 600; color: #f0f6fc; }
-        .package-price { font-size: 13px; color: #3fb950; font-weight: 700; margin-top: 4px; }
+        .package-price { font-size: 13px; color: #3fb950; font-weight: 700; margin-top: 4px; background: rgba(63, 185, 80, 0.1); padding: 2px 8px; border-radius: 12px; }
+        
         .qr-section { text-align: center; background: #0d1117; padding: 15px; border-radius: 10px; border: 1px solid #30363d; margin-bottom: 18px; }
         .qr-section img { width: 180px; height: 180px; border-radius: 8px; border: 2px solid #58a6ff; margin-top: 10px; }
         .submit-btn { width: 100%; padding: 14px; background-color: #238636; color: #ffffff; border: none; border-radius: 8px; font-size: 16px; font-weight: 700; cursor: pointer; }
@@ -68,7 +72,6 @@
             <div class="package-grid" id="packageGrid"></div>
         </div>
 
-        <!-- 🖼️ ផ្នែក QR Code បង់ប្រាក់ -->
         <div class="qr-section">
             <label>សូមស្កែន QR Code ដើម្បីបង់ប្រាក់៖</label>
             <br>
@@ -83,24 +86,35 @@
 </div>
 
 <script>
+    // 💎 រូបភាពកញ្ចប់ Mobile Legends
+    const mlbbImg = "https://cdn-icons-png.flaticon.com/512/2042/2042862.png"; 
+    const passImg = "https://cdn-icons-png.flaticon.com/512/2543/2543206.png"; 
+
     const mlbbPackages = [
-        { name: "86 Diamonds", price: "$1.25" },
-        { name: "172 Diamonds", price: "$2.50" },
-        { name: "257 Diamonds", price: "$3.70" },
-        { name: "344 Diamonds", price: "$4.90" },
-        { name: "514 Diamonds", price: "$7.30" },
-        { name: "706 Diamonds", price: "$9.80" },
-        { name: "Weekly Diamond Pass", price: "$1.99" },
-        { name: "Twilight Pass", price: "$9.99" }
+        { name: "86 Diamonds", price: "$1.25", img: mlbbImg },
+        { name: "172 Diamonds", price: "$2.50", img: mlbbImg },
+        { name: "257 Diamonds", price: "$3.70", img: mlbbImg },
+        { name: "344 Diamonds", price: "$4.90", img: mlbbImg },
+        { name: "514 Diamonds", price: "$7.30", img: mlbbImg },
+        { name: "706 Diamonds", price: "$9.80", img: mlbbImg },
+        { name: "2195 Diamonds", price: "$29.50", img: mlbbImg },
+        { name: "3688 Diamonds", price: "$48.00", img: mlbbImg },
+        { name: "Weekly Pass", price: "$1.99", img: passImg },
+        { name: "Twilight Pass", price: "$9.99", img: passImg }
     ];
 
+    // 🔥 រូបភាពកញ្ចប់ Free Fire
+    const ffImg = "https://cdn-icons-png.flaticon.com/512/1828/1828884.png";
+
     const ffPackages = [
-        { name: "110 Diamonds", price: "$1.00" },
-        { name: "231 Diamonds", price: "$2.00" },
-        { name: "341 Diamonds", price: "$3.00" },
-        { name: "572 Diamonds", price: "$5.00" },
-        { name: "1163 Diamonds", price: "$10.00" },
-        { name: "Weekly Membership", price: "$2.20" }
+        { name: "110 Diamonds", price: "$1.00", img: ffImg },
+        { name: "231 Diamonds", price: "$2.00", img: ffImg },
+        { name: "341 Diamonds", price: "$3.00", img: ffImg },
+        { name: "572 Diamonds", price: "$5.00", img: ffImg },
+        { name: "1163 Diamonds", price: "$10.00", img: ffImg },
+        { name: "2398 Diamonds", price: "$20.00", img: ffImg },
+        { name: "Weekly Member", price: "$2.20", img: passImg },
+        { name: "Monthly Member", price: "$8.50", img: passImg }
     ];
 
     let selectedPackage = null;
@@ -120,7 +134,12 @@
             card.className = "package-card";
             if (index === 0) { card.classList.add("active"); selectedPackage = pkg; }
             
-            card.innerHTML = `<div class="package-title">${pkg.name}</div><div class="package-price">${pkg.price}</div>`;
+            card.innerHTML = `
+                <img src="${pkg.img}" class="package-img" alt="Diamond">
+                <div class="package-title">${pkg.name}</div>
+                <div class="package-price">${pkg.price}</div>
+            `;
+            
             card.onclick = () => {
                 document.querySelectorAll(".package-card").forEach(c => c.classList.remove("active"));
                 card.classList.add("active");
@@ -141,7 +160,6 @@
         const phone = document.getElementById("userPhone").value;
         const statusMsg = document.getElementById("statusMsg");
 
-        // 🔑 Token & Chat ID ត្រូវបានកំណត់រួចរាល់
         const BOT_TOKEN = "8244501179:AAGBbG4PsC7rS7Gq2jmrBKqbQYiPbuFGXSE"; 
         const CHAT_ID = "5129300837";                   
 
