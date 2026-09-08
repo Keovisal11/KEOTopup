@@ -6,133 +6,29 @@
     <title>KEO Top-Up - សេវាកម្ម បញ្ចូលហ្គេមរហ័ស</title>
     <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Kantumruy Pro', sans-serif;
-        }
-
-        body {
-            background-color: #0d1117;
-            color: #f0f6fc;
-            padding: 20px 15px;
-            display: flex;
-            justify-content: center;
-        }
-
-        .container {
-            max-width: 500px;
-            width: 100%;
-            background: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 16px;
-            padding: 24px 20px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 24px;
-        }
-
-        .header h1 {
-            color: #58a6ff;
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 6px;
-        }
-
-        .header p {
-            color: #8b949e;
-            font-size: 14px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            font-size: 14px;
-            color: #c9d1d9;
-        }
-
-        input, select {
-            width: 100%;
-            padding: 12px 14px;
-            background-color: #0d1117;
-            border: 1px solid #30363d;
-            border-radius: 8px;
-            color: #f0f6fc;
-            font-size: 15px;
-            outline: none;
-            transition: border-color 0.2s;
-        }
-
-        input:focus, select:focus {
-            border-color: #58a6ff;
-        }
-
-        .package-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-top: 8px;
-        }
-
-        .package-card {
-            background: #0d1117;
-            border: 1.5px solid #30363d;
-            border-radius: 10px;
-            padding: 12px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .package-card:hover {
-            border-color: #58a6ff;
-            background: #1f242d;
-        }
-
-        .package-card.active {
-            border-color: #238636;
-            background: #102a1d;
-        }
-
-        .package-title {
-            font-size: 14px;
-            font-weight: 600;
-            color: #f0f6fc;
-        }
-
-        .package-price {
-            font-size: 13px;
-            color: #3fb950;
-            font-weight: 700;
-            margin-top: 4px;
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 14px;
-            background-color: #238636;
-            color: #ffffff;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: background-color 0.2s;
-            margin-top: 10px;
-        }
-
-        .submit-btn:hover {
-            background-color: #2ea043;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Kantumruy Pro', sans-serif; }
+        body { background-color: #0d1117; color: #f0f6fc; padding: 20px 15px; display: flex; justify-content: center; }
+        .container { max-width: 500px; width: 100%; background: #161b22; border: 1px solid #30363d; border-radius: 16px; padding: 24px 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
+        .header { text-align: center; margin-bottom: 20px; }
+        .header h1 { color: #58a6ff; font-size: 24px; font-weight: 700; margin-bottom: 6px; }
+        .header p { color: #8b949e; font-size: 14px; }
+        .form-group { margin-bottom: 18px; }
+        label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 14px; color: #c9d1d9; }
+        input, select { width: 100%; padding: 12px 14px; background-color: #0d1117; border: 1px solid #30363d; border-radius: 8px; color: #f0f6fc; font-size: 15px; outline: none; }
+        input:focus, select:focus { border-color: #58a6ff; }
+        .package-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 8px; }
+        .package-card { background: #0d1117; border: 1.5px solid #30363d; border-radius: 10px; padding: 12px; text-align: center; cursor: pointer; transition: all 0.2s ease; }
+        .package-card:hover { border-color: #58a6ff; background: #1f242d; }
+        .package-card.active { border-color: #238636; background: #102a1d; }
+        .package-title { font-size: 14px; font-weight: 600; color: #f0f6fc; }
+        .package-price { font-size: 13px; color: #3fb950; font-weight: 700; margin-top: 4px; }
+        .qr-section { text-align: center; background: #0d1117; padding: 15px; border-radius: 10px; border: 1px solid #30363d; margin-bottom: 18px; }
+        .qr-section img { width: 180px; height: 180px; border-radius: 8px; border: 2px solid #58a6ff; margin-top: 10px; }
+        .submit-btn { width: 100%; padding: 14px; background-color: #238636; color: #ffffff; border: none; border-radius: 8px; font-size: 16px; font-weight: 700; cursor: pointer; }
+        .submit-btn:hover { background-color: #2ea043; }
+        .status-msg { margin-top: 15px; padding: 12px; border-radius: 8px; font-size: 14px; text-align: center; display: none; }
+        .status-msg.success { background-color: #102a1d; color: #3fb950; border: 1px solid #238636; display: block; }
+        .status-msg.error { background-color: #2a1010; color: #f85149; border: 1px solid #da3633; display: block; }
     </style>
 </head>
 <body>
@@ -144,7 +40,6 @@
     </div>
 
     <form id="topupForm">
-        <!-- ជ្រើសរើសហ្គេម -->
         <div class="form-group">
             <label for="gameSelect">ជ្រើសរើសហ្គេម (Select Game):</label>
             <select id="gameSelect" onchange="updatePackages()">
@@ -153,63 +48,62 @@
             </select>
         </div>
 
-        <!-- វាយបញ្ចូល ID -->
         <div class="form-group">
             <label for="userId">Game ID / Player ID:</label>
             <input type="text" id="userId" placeholder="ឧទាហរណ៍៖ 12345678" required>
         </div>
 
-        <!-- Zone ID (សម្រាប់ MLBB) -->
         <div class="form-group" id="zoneIdGroup">
             <label for="zoneId">Zone ID (សម្រាប់ MLBB):</label>
             <input type="text" id="zoneId" placeholder="ឧទាហរណ៍៖ 1234">
         </div>
 
-        <!-- លេខទូរស័ព្ទ -->
         <div class="form-group">
-            <label for="userPhone">លេខទូរស័ព្ទ / Telegram ទាក់ទង:</label>
+            <label for="userPhone">លេខទូរស័ព្ទ ឬ Telegram ទាក់ទង:</label>
             <input type="text" id="userPhone" placeholder="012 345 678" required>
         </div>
 
-        <!-- កញ្ចប់ Top Up -->
         <div class="form-group">
             <label>ជ្រើសរើសកញ្ចប់ (Select Package):</label>
             <div class="package-grid" id="packageGrid"></div>
         </div>
 
+        <!-- 🖼️ ផ្នែក QR Code បង់ប្រាក់ -->
+        <div class="qr-section">
+            <label>សូមស្កែន QR Code ដើម្បីបង់ប្រាក់៖</label>
+            <br>
+            <img id="qrImage" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=KEO-TOPUP-KHQR" alt="KHQR Payment">
+            <p style="font-size: 12px; color: #8b949e; margin-top: 8px;">ឈ្មោះគណនី៖ <strong>KEO VISAL</strong></p>
+        </div>
+
         <button type="submit" class="submit-btn">🚀 បញ្ជូនការកុម្ម៉ង់ (Order Now)</button>
     </form>
+
+    <div id="statusMsg" class="status-msg"></div>
 </div>
 
 <script>
-    // 💎 កញ្ចប់សម្រាប់ Mobile Legends
     const mlbbPackages = [
         { name: "86 Diamonds", price: "$1.25" },
         { name: "172 Diamonds", price: "$2.50" },
         { name: "257 Diamonds", price: "$3.70" },
         { name: "344 Diamonds", price: "$4.90" },
-        { name: "429 Diamonds", price: "$6.10" },
         { name: "514 Diamonds", price: "$7.30" },
         { name: "706 Diamonds", price: "$9.80" },
-        { name: "878 Diamonds", price: "$12.20" },
-        { name: "1412 Diamonds", price: "$19.50" },
-        { name: "2195 Diamonds", price: "$29.00" },
         { name: "Weekly Diamond Pass", price: "$1.99" },
         { name: "Twilight Pass", price: "$9.99" }
     ];
 
-    // 🔥 កញ្ចប់សម្រាប់ Free Fire
     const ffPackages = [
         { name: "110 Diamonds", price: "$1.00" },
         { name: "231 Diamonds", price: "$2.00" },
         { name: "341 Diamonds", price: "$3.00" },
         { name: "572 Diamonds", price: "$5.00" },
-        { name: "803 Diamonds", price: "$7.00" },
         { name: "1163 Diamonds", price: "$10.00" },
-        { name: "2398 Diamonds", price: "$20.00" },
-        { name: "Weekly Membership", price: "$2.20" },
-        { name: "Monthly Membership", price: "$8.50" }
+        { name: "Weekly Membership", price: "$2.20" }
     ];
+
+    let selectedPackage = null;
 
     function updatePackages() {
         const game = document.getElementById("gameSelect").value;
@@ -218,42 +112,69 @@
 
         grid.innerHTML = "";
 
-        if (game === "Mobile Legends") {
-            zoneGroup.style.display = "block";
-            renderCards(mlbbPackages);
-        } else {
-            zoneGroup.style.display = "none";
-            renderCards(ffPackages);
-        }
-    }
+        const packages = (game === "Mobile Legends") ? mlbbPackages : ffPackages;
+        zoneGroup.style.display = (game === "Mobile Legends") ? "block" : "none";
 
-    function renderCards(packages) {
-        const grid = document.getElementById("packageGrid");
         packages.forEach((pkg, index) => {
             const card = document.createElement("div");
             card.className = "package-card";
-            if (index === 0) card.classList.add("active");
+            if (index === 0) { card.classList.add("active"); selectedPackage = pkg; }
             
-            card.innerHTML = `
-                <div class="package-title">${pkg.name}</div>
-                <div class="package-price">${pkg.price}</div>
-            `;
-            
+            card.innerHTML = `<div class="package-title">${pkg.name}</div><div class="package-price">${pkg.price}</div>`;
             card.onclick = () => {
                 document.querySelectorAll(".package-card").forEach(c => c.classList.remove("active"));
                 card.classList.add("active");
+                selectedPackage = pkg;
             };
-            
             grid.appendChild(card);
         });
     }
 
-    // ដំណើរការបង្ហាញកញ្ចប់ដំបូង
     updatePackages();
 
     document.getElementById("topupForm").addEventListener("submit", function(e) {
         e.preventDefault();
-        alert("អរគុណសម្រាប់ការកុម្ម៉ង់! កញ្ចប់ត្រូវ បានជ្រើសរើស។");
+
+        const game = document.getElementById("gameSelect").value;
+        const userId = document.getElementById("userId").value;
+        const zoneId = document.getElementById("zoneId").value;
+        const phone = document.getElementById("userPhone").value;
+        const statusMsg = document.getElementById("statusMsg");
+
+        // 🔑 Token & Chat ID ត្រូវបានកំណត់រួចរាល់
+        const BOT_TOKEN = "8244501179:AAGBbG4PsC7rS7Gq2jmrBKqbQYiPbuFGXSE"; 
+        const CHAT_ID = "5129300837";                   
+
+        let text = `🛒 *មានការបញ្ជាទិញថ្មី (New Order)*\n\n`;
+        text += `🎮 *ហ្គេម:* ${game}\n`;
+        text += `🆔 *User ID:* \`${userId}\`\n`;
+        if (game === "Mobile Legends") {
+            text += `🌐 *Zone ID:* \`${zoneId}\`\n`;
+        }
+        text += `💎 *កញ្ចប់:* ${selectedPackage.name} (${selectedPackage.price})\n`;
+        text += `📞 *លេខទាក់ទង:* ${phone}\n`;
+
+        fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ chat_id: CHAT_ID, text: text, parse_mode: "Markdown" })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.ok) {
+                statusMsg.className = "status-msg success";
+                statusMsg.innerText = "✅ បញ្ជូនការកុម្ម៉ង់ជោគជ័យ! យើងខ្ញុំនឹងពិនិត្យមើល និងបញ្ចូលជូនឆាប់ៗ។";
+                document.getElementById("topupForm").reset();
+                updatePackages();
+            } else {
+                statusMsg.className = "status-msg error";
+                statusMsg.innerText = "❌ មានបញ្ហា! សូមពិនិត្យមើលម្ដងទៀត។";
+            }
+        })
+        .catch(err => {
+            statusMsg.className = "status-msg error";
+            statusMsg.innerText = "❌ បរាជ័យក្នុងការផ្ញើ!";
+        });
     });
 </script>
 
