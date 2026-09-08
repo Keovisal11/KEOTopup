@@ -3,97 +3,259 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KEO TOP UP - Home</title>
+    <title>KEO Top-Up - សេវាកម្ម បញ្ចូលហ្គេមរហ័ស</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Kantumruy Pro', sans-serif;
         }
+
         body {
-            background-color: #0f172a;
-            color: white;
-            text-align: center;
-            padding: 20px;
+            background-color: #0d1117;
+            color: #f0f6fc;
+            padding: 20px 15px;
+            display: flex;
+            justify-content: center;
         }
-        header {
-            padding: 20px 0;
-            margin-bottom: 20px;
-        }
-        h1 {
-            font-size: 26px;
-            color: #ffffff;
-        }
-        p.subtitle {
-            color: #94a3b8;
-            margin-top: 5px;
-            font-size: 14px;
-        }
-        h2.section-title {
-            margin-bottom: 20px;
-            font-size: 20px;
-        }
+
         .container {
             max-width: 500px;
-            margin: 0 auto;
-        }
-        .game-card {
-            background-color: #1e293b;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
-            border: 1px solid #334155;
-        }
-        .game-card h3 {
-            font-size: 20px;
-            margin-bottom: 8px;
-        }
-        .game-card p {
-            color: #94a3b8;
-            font-size: 14px;
-            margin-bottom: 15px;
-        }
-        .btn-topup {
-            display: inline-block;
-            background-color: #22c55e;
-            color: white;
-            padding: 12px 24px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 16px;
             width: 100%;
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 16px;
+            padding: 24px 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
         }
-        .btn-topup:active {
-            background-color: #16a34a;
+
+        .header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .header h1 {
+            color: #58a6ff;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .header p {
+            color: #8b949e;
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #c9d1d9;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px 14px;
+            background-color: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            color: #f0f6fc;
+            font-size: 15px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input:focus, select:focus {
+            border-color: #58a6ff;
+        }
+
+        .package-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .package-card {
+            background: #0d1117;
+            border: 1.5px solid #30363d;
+            border-radius: 10px;
+            padding: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .package-card:hover {
+            border-color: #58a6ff;
+            background: #1f242d;
+        }
+
+        .package-card.active {
+            border-color: #238636;
+            background: #102a1d;
+        }
+
+        .package-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #f0f6fc;
+        }
+
+        .package-price {
+            font-size: 13px;
+            color: #3fb950;
+            font-weight: 700;
+            margin-top: 4px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background-color: #238636;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            background-color: #2ea043;
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <header>
-        <h1>🎮 KEO TOP UP</h1>
-        <p class="subtitle">Fast & Easy Game Top Up</p>
-    </header>
-
-    <h2 class="section-title">Choose Your Game</h2>
-
-    <!-- Free Fire Card -->
-    <div class="game-card">
-        <h3>🔥 Free Fire</h3>
-        <p>Diamonds Top Up</p>
-        <a href="freefire.html" class="btn-topup">Top Up Now</a>
+    <div class="header">
+        <h1>🎮 KEO Top-Up</h1>
+        <p>សេវាកម្មបញ្ចូល Diamond លឿនរហ័ស 24/7</p>
     </div>
 
-    <!-- Mobile Legends Card -->
-    <div class="game-card">
-        <h3>⚔️ Mobile Legends</h3>
-        <p>Diamonds Top Up</p>
-        <a href="mlbb.html" class="btn-topup">Top Up Now</a>
-    </div>
+    <form id="topupForm">
+        <!-- ជ្រើសរើសហ្គេម -->
+        <div class="form-group">
+            <label for="gameSelect">ជ្រើសរើសហ្គេម (Select Game):</label>
+            <select id="gameSelect" onchange="updatePackages()">
+                <option value="Mobile Legends">Mobile Legends: Bang Bang</option>
+                <option value="Free Fire">Free Fire</option>
+            </select>
+        </div>
+
+        <!-- វាយបញ្ចូល ID -->
+        <div class="form-group">
+            <label for="userId">Game ID / Player ID:</label>
+            <input type="text" id="userId" placeholder="ឧទាហរណ៍៖ 12345678" required>
+        </div>
+
+        <!-- Zone ID (សម្រាប់ MLBB) -->
+        <div class="form-group" id="zoneIdGroup">
+            <label for="zoneId">Zone ID (សម្រាប់ MLBB):</label>
+            <input type="text" id="zoneId" placeholder="ឧទាហរណ៍៖ 1234">
+        </div>
+
+        <!-- លេខទូរស័ព្ទ -->
+        <div class="form-group">
+            <label for="userPhone">លេខទូរស័ព្ទ / Telegram ទាក់ទង:</label>
+            <input type="text" id="userPhone" placeholder="012 345 678" required>
+        </div>
+
+        <!-- កញ្ចប់ Top Up -->
+        <div class="form-group">
+            <label>ជ្រើសរើសកញ្ចប់ (Select Package):</label>
+            <div class="package-grid" id="packageGrid"></div>
+        </div>
+
+        <button type="submit" class="submit-btn">🚀 បញ្ជូនការកុម្ម៉ង់ (Order Now)</button>
+    </form>
 </div>
+
+<script>
+    // 💎 កញ្ចប់សម្រាប់ Mobile Legends
+    const mlbbPackages = [
+        { name: "86 Diamonds", price: "$1.25" },
+        { name: "172 Diamonds", price: "$2.50" },
+        { name: "257 Diamonds", price: "$3.70" },
+        { name: "344 Diamonds", price: "$4.90" },
+        { name: "429 Diamonds", price: "$6.10" },
+        { name: "514 Diamonds", price: "$7.30" },
+        { name: "706 Diamonds", price: "$9.80" },
+        { name: "878 Diamonds", price: "$12.20" },
+        { name: "1412 Diamonds", price: "$19.50" },
+        { name: "2195 Diamonds", price: "$29.00" },
+        { name: "Weekly Diamond Pass", price: "$1.99" },
+        { name: "Twilight Pass", price: "$9.99" }
+    ];
+
+    // 🔥 កញ្ចប់សម្រាប់ Free Fire
+    const ffPackages = [
+        { name: "110 Diamonds", price: "$1.00" },
+        { name: "231 Diamonds", price: "$2.00" },
+        { name: "341 Diamonds", price: "$3.00" },
+        { name: "572 Diamonds", price: "$5.00" },
+        { name: "803 Diamonds", price: "$7.00" },
+        { name: "1163 Diamonds", price: "$10.00" },
+        { name: "2398 Diamonds", price: "$20.00" },
+        { name: "Weekly Membership", price: "$2.20" },
+        { name: "Monthly Membership", price: "$8.50" }
+    ];
+
+    function updatePackages() {
+        const game = document.getElementById("gameSelect").value;
+        const grid = document.getElementById("packageGrid");
+        const zoneGroup = document.getElementById("zoneIdGroup");
+
+        grid.innerHTML = "";
+
+        if (game === "Mobile Legends") {
+            zoneGroup.style.display = "block";
+            renderCards(mlbbPackages);
+        } else {
+            zoneGroup.style.display = "none";
+            renderCards(ffPackages);
+        }
+    }
+
+    function renderCards(packages) {
+        const grid = document.getElementById("packageGrid");
+        packages.forEach((pkg, index) => {
+            const card = document.createElement("div");
+            card.className = "package-card";
+            if (index === 0) card.classList.add("active");
+            
+            card.innerHTML = `
+                <div class="package-title">${pkg.name}</div>
+                <div class="package-price">${pkg.price}</div>
+            `;
+            
+            card.onclick = () => {
+                document.querySelectorAll(".package-card").forEach(c => c.classList.remove("active"));
+                card.classList.add("active");
+            };
+            
+            grid.appendChild(card);
+        });
+    }
+
+    // ដំណើរការបង្ហាញកញ្ចប់ដំបូង
+    updatePackages();
+
+    document.getElementById("topupForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+        alert("អរគុណសម្រាប់ការកុម្ម៉ង់! កញ្ចប់ត្រូវ បានជ្រើសរើស។");
+    });
+</script>
 
 </body>
 </html>
