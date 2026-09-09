@@ -140,7 +140,8 @@
         <h3>ស្កែន QR Code ដើម្បីបង់ប្រាក់</h3>
         
         <div class="qr-box">
-            <img id="abaQrImage" src="" alt="ABA KHQR Code">
+            <!-- រូបភាព QR Code ABA របស់អ្នកផ្ទាល់ (ฝังក្នុងកូដស្រេច) -->
+            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAP//////////////////////////////////////////////////////////////////////////////////////wgALCAE8AZ8BAREA/8QAFBABAAAAAAAAAAAAAAAAAAAAAP/aAAgBAQABPxA=" alt="ABA KHQR Code">
         </div>
 
         <div style="text-align: left; margin-top: 5px;">
@@ -156,14 +157,9 @@
 <script>
     const BOT_TOKEN = "8244501179:AAGBbG4PsC7rS7Gq2jmrBKqbQYiPbuFGXSE"; 
     const CHAT_ID = "5129300837"; 
-    
-    // រូបភាព ABA QR ផ្ទាល់ខ្លួនរបស់អ្នក
-    const ABA_QR_URL = "https://i.postimg.cc/QyJ50bS4/image-7f0a43.jpg"; 
 
     let selectedPkg = "";
     let selectedPrice = "";
-
-    document.getElementById("abaQrImage").src = ABA_QR_URL;
 
     function selectPackage(element, packageName, price) {
         let items = document.querySelectorAll('.item');
