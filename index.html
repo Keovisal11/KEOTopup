@@ -43,7 +43,7 @@
         }
         .modal-content h3 { color: #38bdf8; margin-bottom: 5px; }
         .qr-box { background: white; padding: 10px; border-radius: 12px; display: inline-block; margin: 10px 0; }
-        .qr-box img { width: 220px; height: auto; display: block; border-radius: 8px; }
+        .qr-box img { width: 240px; height: auto; display: block; border-radius: 8px; }
         .btn-send {
             background: #22c55e; color: #ffffff; border: none; padding: 12px; border-radius: 8px;
             cursor: pointer; margin-top: 10px; font-weight: bold; width: 100%; font-size: 16px;
@@ -138,7 +138,6 @@
 <div class="modal" id="paymentModal">
     <div class="modal-content">
         <h3>ស្កែន QR Code ដើម្បីបង់ប្រាក់</h3>
-        <p style="font-size: 15px; color: #22c55e; font-weight: bold; margin-top: 2px;">KEOVISAL MALEN</p>
         
         <div class="qr-box">
             <img id="abaQrImage" src="" alt="ABA KHQR Code">
@@ -155,13 +154,11 @@
 </div>
 
 <script>
-    // ព័ត៌មាន Bot និង ABA QR Code របស់អ្នកត្រូវបានរៀបចំរួចរាល់៖
     const BOT_TOKEN = "8244501179:AAGBbG4PsC7rS7Gq2jmrBKqbQYiPbuFGXSE"; 
     const CHAT_ID = "5129300837"; 
     
-    // បង្កើត QR Code ស្វ័យប្រវត្តិតាមរយៈ KHQR String គណនី KEOVISAL MALEN
-    const khqrData = "00020101021238560016A00000077000010101110177611630208ABA KHQR0404USD 52045999530384054041.005802KH5914KEOVISAL MALEN6010Phnom Penh6304E1E2";
-    const ABA_QR_URL = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(khqrData)}`;
+    // ប្រើរូបភាព ABA KHQR ដើមរបស់អ្នកដែលស្កែនបាញ់លុយបាន ១០០%
+    const ABA_QR_URL = "https://i.postimg.cc/mD3q4M4t/IMG-0613.jpg"; 
 
     let selectedPkg = "";
     let selectedPrice = "";
