@@ -79,6 +79,7 @@
             width: 45px;
             height: 45px;
             margin-bottom: 8px;
+            object-fit: contain;
         }
         .item .diamonds {
             font-weight: bold;
@@ -106,6 +107,49 @@
             border-radius: 8px;
             cursor: pointer;
         }
+        /* Modal Popup */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            z-index: 999;
+        }
+        .modal-content {
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 16px;
+            text-align: center;
+            max-width: 340px;
+            width: 100%;
+            border: 1px solid #334155;
+        }
+        .modal-content h3 {
+            color: #38bdf8;
+            margin-bottom: 10px;
+        }
+        .modal-content img {
+            width: 100%;
+            max-width: 280px;
+            height: auto;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+        .btn-close {
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-weight: bold;
+            width: 100%;
+        }
     </style>
 </head>
 <body>
@@ -132,34 +176,33 @@
     <div class="card">
         <label>ជ្រើសរើសកញ្ចប់ (Select Package):</label>
         <div class="grid">
-            <!-- Diamond Packages -->
             <div class="item">
-                <img src="https://img.icons8.com/emoji/96/diamond-emoji.png" alt="Diamond">
+                <img src="https://img.icons8.com/3d-fluency/96/diamond.png" alt="Diamond">
                 <div class="diamonds">100 Diamonds</div>
                 <div class="price">$1.00</div>
             </div>
             <div class="item">
-                <img src="https://img.icons8.com/emoji/96/diamond-emoji.png" alt="Diamond">
+                <img src="https://img.icons8.com/3d-fluency/96/diamond.png" alt="Diamond">
                 <div class="diamonds">210 Diamonds</div>
                 <div class="price">$2.10</div>
             </div>
             <div class="item">
-                <img src="https://img.icons8.com/emoji/96/diamond-emoji.png" alt="Diamond">
+                <img src="https://img.icons8.com/3d-fluency/96/diamond.png" alt="Diamond">
                 <div class="diamonds">530 Diamonds</div>
                 <div class="price">$5.30</div>
             </div>
             <div class="item">
-                <img src="https://img.icons8.com/emoji/96/diamond-emoji.png" alt="Diamond">
+                <img src="https://img.icons8.com/3d-fluency/96/diamond.png" alt="Diamond">
                 <div class="diamonds">1080 Diamonds</div>
                 <div class="price">$10.80</div>
             </div>
             <div class="item">
-                <img src="https://img.icons8.com/emoji/96/diamond-emoji.png" alt="Diamond">
+                <img src="https://img.icons8.com/3d-fluency/96/diamond.png" alt="Diamond">
                 <div class="diamonds">2180 Diamonds</div>
                 <div class="price">$21.80</div>
             </div>
             <div class="item">
-                <img src="https://img.icons8.com/emoji/96/diamond-emoji.png" alt="Diamond">
+                <img src="https://img.icons8.com/3d-fluency/96/diamond.png" alt="Diamond">
                 <div class="diamonds">5600 Diamonds</div>
                 <div class="price">$56.00</div>
             </div>
@@ -188,8 +231,28 @@
         </div>
     </div>
 
-    <button class="btn-submit">បន្តទៅការបង់ប្រាក់</button>
+    <button class="btn-submit" onclick="showModal()">បន្តទៅការបង់ប្រាក់</button>
 </div>
+
+<!-- Modal QR Code Payment -->
+<div class="modal" id="paymentModal">
+    <div class="modal-content">
+        <h3>ស្កែន QR Code ដើម្បីបង់ប្រាក់</h3>
+        <p style="font-size: 14px; color: #22c55e; font-weight: bold; margin-top: 4px;">KEOVISAL MALEN</p>
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=00020101021238580009abaakhppxxx0111017761163020215KEOVISAL%20MALEN0303USD5204599953038405802KH5914KEOVISAL%20MALEN6010PHNOM%20PENH6215071101776116301006304" alt="ABA QR Code">
+        <p style="font-size: 13px; color: #94a3b8; margin-top: 6px;">សូមថតរៀបចំផ្ញើវិក្កយបត្របង់ប្រាក់មកកាន់ Telegram</p>
+        <button class="btn-close" onclick="closeModal()">បិទ</button>
+    </div>
+</div>
+
+<script>
+    function showModal() {
+        document.getElementById('paymentModal').style.display = 'flex';
+    }
+    function closeModal() {
+        document.getElementById('paymentModal').style.display = 'none';
+    }
+</script>
 
 </body>
 </html>
